@@ -87,7 +87,11 @@
 			<artifactId>richfaces-core-impl</artifactId>
 		</dependency>
 		<!-- end RichFaces stuff -->
-
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency>
 		<!-- ICEFaces <dependency> <groupId>org.icefaces</groupId> <artifactId>icefaces</artifactId> 
 			<version>2.0.0</version> <exclusions> <exclusion> <groupId>com.sun.faces</groupId> 
 			<artifactId>jsf-impl</artifactId> </exclusion> </exclusions> </dependency> 

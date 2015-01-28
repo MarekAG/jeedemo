@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                template="/templates/default.xhtml">
+
+    <ui:define name="content">
+        <h:form>
+            <h:dataTable value="#{developerBean.developerHouses}" var="item">
+                <f:facet name="header">#{msg.housesAllLabel}</f:facet>
+                <h:column>
+                    <f:facet name="header">#{msg.color}</f:facet>
+                    <h:outputText value="#{item.color}" />
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">#{msg.floors}</f:facet>
+                    <h:outputText value="#{item.nrOfFloors}" />
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">#{msg.address}</f:facet>
+                    <h:outputText value="#{item.address}" />
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">#{msg.image}</f:facet>
+                    <h:graphicImage url="#{item.imageUrl}" width="120px" height="120px"/>
+                </h:column>
+
+            </h:dataTable>
+        </h:form>
+
+    </ui:define>
+
+</ui:composition>

@@ -5,26 +5,55 @@
 	xmlns:h="http://java.sun.com/jsf/html">
   <div>
 	<h:form>
+		<h:panelGrid columns="2">
+
+			<h:outputText value="#{msg.lang}: " />
+			<h:selectOneMenu value="#{language.localeCode}" onchange="submit()"
+							 valueChangeListener="#{language.countryLocaleCodeChanged}">
+				<f:selectItems value="#{language.countriesInMap}" />
+			</h:selectOneMenu>
+		</h:panelGrid>
 	  <ul>
 		<li>
 		  <h:commandLink action="home?faces-redirect=true">
 			<h:outputText value="#{msg.linkHome}" />
 		  </h:commandLink>
 		</li>
-		<li>
-		  <h:commandLink action="add?faces-redirect=true">
-			<h:outputText value="#{msg.personAddLabel}" />
-		  </h:commandLink></li>
-		<li>
-		  <h:commandLink action="showPersons?faces-redirect=true">
-			 <h:outputText value="#{msg.personAllLabel}" />
-		  </h:commandLink>
-		</li>
-		<li>
-		  <h:commandLink action="sell">
-			 <h:outputText value=" Sell car" />
-		  </h:commandLink>
-		</li>
+		  <li>
+			  <h:commandLink action="addDeveloper?faces-redirect=true">
+				  <h:outputText value="#{msg.addDeveloper}" />
+			  </h:commandLink>
+		  </li>
+		  <li>
+			  <h:commandLink action="addHouse?faces-redirect=true">
+				  <h:outputText value="#{msg.addHouse}" />
+			  </h:commandLink>
+		  </li>
+		  <li>
+			  <h:commandLink action="addClient?faces-redirect=true">
+				  <h:outputText value="#{msg.addClient}" />
+			  </h:commandLink>
+		  </li>
+		  <li>
+			  <h:commandLink action="showDevelopers?faces-redirect=true">
+				  <h:outputText value="#{msg.showDevelopers}" />
+			  </h:commandLink>
+		  </li>
+		  <li>
+			  <h:commandLink action="showHouses?faces-redirect=true">
+				  <h:outputText value="#{msg.showHouses}" />
+			  </h:commandLink>
+		  </li>
+		  <li>
+			  <h:commandLink action="showClients?faces-redirect=true">
+				  <h:outputText value="#{msg.showClients}" />
+			  </h:commandLink>
+		  </li>
+		  <li>
+			  <h:commandLink action="sellHouse?faces-redirect=true">
+				  <h:outputText value="#{msg.sellHouse}" />
+			  </h:commandLink>
+		  </li>
 	</ul>
    </h:form>
   </div>

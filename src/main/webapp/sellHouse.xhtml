@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                template="/templates/default.xhtml"
+                xmlns:a4j="http://richfaces.org/a4j"
+                xmlns:rich="http://richfaces.org/rich">
+
+    <ui:define name="content">
+        <h:form id="sellHouseForm">
+            <h:panelGrid columns="2">
+
+                <h:outputText value="#{msg.client}" />
+                <h:selectOneMenu id="client" value="#{houseSellBean.clientId}" required="true">
+                    <f:selectItems value="#{houseSellBean.allCLients}" var="client"
+                                   itemValue="#{client.id}" itemLabel="#{client.firstName} #{client.lastName} (#{client.pesel})" />
+                </h:selectOneMenu>
+
+                <h:outputText value="#{msg.house}" />
+                <h:selectOneMenu id="house" value="#{houseSellBean.houseId}" required="true">
+                    <f:selectItems value="#{houseSellBean.unsoldHouses}" var="house"
+                                   itemValue="#{house.id}" itemLabel="#{house.address} (#{house.dateOfConstruction})" />
+                </h:selectOneMenu>
+
+
+            </h:panelGrid>
+
+            <h:commandButton value="#{msg.sell}" action="#{houseSellBean.sellHouse}" />
+
+
+        </h:form>
+
+    </ui:define>
+</ui:composition>

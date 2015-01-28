@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:jc="http://xmlns.jcp.org/jsp/jstl/core"
+                xmlns:jf="http://xmlns.jcp.org/jsp/jstl/functions"
+                template="/templates/default.xhtml"
+                xmlns:a4j="http://richfaces.org/a4j"
+                xmlns:rich="http://richfaces.org/rich">
+
+    <ui:define name="content">
+        <jc:if test="#{developerBean.allDevelopers.rowCount != 0}" >
+
+        <h:form id="houseForm">
+            <h:panelGrid columns="2">
+
+                <h:outputText value="#{msg.color}" />
+                <h:selectOneRadio id="color" value="#{houseBean.house.color}" required="#{true}">
+                    <f:selectItem itemValue="blue" itemLabel="#{msg.blue}"/>
+                    <f:selectItem itemValue="red" itemLabel="#{msg.red}"/>
+                    <f:selectItem itemValue="wrong" itemLabel="#{msg.wrong}"/>
+                </h:selectOneRadio>
+
+                <h:outputText value="#{msg.nrOfFloors}" />
+                <h:inputText id="nrOfFloors" value="#{houseBean.house.nrOfFloors}" />
+
+                <h:outputText value="#{msg.address}" />
+                <h:inputText id="address" value="#{houseBean.house.address}" validator="#{houseBean.uniqueAddress}"
+                             required="#{true}" />
+
+                <h:outputText value="#{msg.imageUrl}" />
+                <h:inputText id="imageUrl" value="#{houseBean.house.imageUrl}"
+                             required="#{true}" >
+                    <f:ajax execute="@this" event="change" render="message beanState" />
+                </h:inputText>
+
+                <h:outputText value="#{msg.dateOfCOnstruction}" />
+                <rich:calendar value="#{houseBean.house.dateOfConstruction}"
+                               id="calendar" datePattern="dd.MM.yyyy" showApplyButton="#{false}"
+                               style="width:200px">
+                </rich:calendar>
+
+                <h:outputText value="#{msg.developer}" />
+                <h:selectOneMenu id="developer" value="#{houseBean.developerId}" required="true">
+                    <f:selectItems value="#{houseSellBean.allDevelopers}" var="developer"
+                                   itemValue="#{developer.id}" itemLabel="#{developer.name} (#{developer.nip})" />
+                </h:selectOneMenu>
+            </h:panelGrid>
+
+            <h:commandButton value="#{msg.formOKButton}"
+                             action="#{houseBean.addHouse}" />
+
+            <h:panelGrid>
+                <h:messages id="message" showDetail="#{true}"
+                            showSummary="#{false}" />
+            </h:panelGrid>
+
+            <h:panelGrid id="beanState" columns="2">
+                <h:outputText value="#{msg.imagePreview}" />
+                <h:graphicImage id="developerOutput" url="#{houseBean.house.imageUrl}" width="120px" height="120px"/>
+            </h:panelGrid>
+
+        </h:form>
+        </jc:if>
+        <jc:if test="#{developerBean.allDevelopers.rowCount == 0}" >
+            <h:panelGrid id="noDevelopers" columns="1">
+                <h:outputText value="#{msg.addDeveloperFirst}" />
+            </h:panelGrid>
+        </jc:if>
+    </ui:define>
+</ui:composition>

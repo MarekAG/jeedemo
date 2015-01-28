@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                template="/templates/default.xhtml"
+                xmlns:a4j="http://richfaces.org/a4j"
+                xmlns:rich="http://richfaces.org/rich">
+
+    <ui:define name="content">
+        <h:form id="clientForm">
+            <h:panelGrid columns="2">
+
+                <h:outputText value="#{msg.firstName}" />
+                <h:inputText id="firstName" value="#{clientBean.client.firstName}"
+                             required="#{true}" />
+
+                <h:outputText value="#{msg.lastName}" />
+                <h:inputText id="lastName" value="#{clientBean.client.lastName}" required="true"/>
+
+                <h:outputText value="#{msg.pesel}" />
+                <h:inputText id="pesel" value="#{clientBean.client.pesel}" validator="#{clientBean.uniquePesel}" required="true"/>
+
+            </h:panelGrid>
+
+            <h:commandButton value="#{msg.formOKButton}"
+                             action="#{clientBean.addClient}" />
+
+
+        </h:form>
+
+    </ui:define>
+</ui:composition>
