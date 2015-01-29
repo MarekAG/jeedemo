@@ -1,20 +1,7 @@
-body {
-   margin: 0;
-   padding: 0;
-   background-color:  saddlebrown;
-   font-family: Verdana, sans-serif;
-   font-size: 0.9em;
-}
 
 .heading {
-  padding: 10px;
-  background: sandybrown;
   border: 1px solid black;
-  font-size: 1.4em;
-  font-style: italic;
-  font-family: Verdana;
-  text-align: center;
-  height: 50px;
+  font-size: 40px;
 }
 
 .menuAndContent {
@@ -23,43 +10,23 @@ body {
 }
 
 .menu {
-  padding-right: 20px;
-  padding-left: 20px;
-  padding-bottom: 20px;
+  padding: 20px;
   border: thin solid black;
   position: absolute;
+  background: #444444;
   left: 10px;
   height: 80%;
   width: 200px;
-  background: sandybrown;
   top: 90px;
 }
 
-.menu a {
-  display: block;
-  border-bottom: thin solid brown;
-  list-style: none;
-  color: black;
-  text-decoration: none;
-}
-
 .content {
-  padding-right: 20px;
-  padding-left: 20px;
-  padding-bottom: 20px;
+  padding: 20px;
   border: thin solid black;
-  background: sandybrown;
+  background: #444444;
   position:absolute;
   left: 225px; 
   right: 65px;
   top: 90px;
   height: 80%;
 }
-
-/*table {*/
-  /*border: solid black;*/
-/*}*/
-
-/*td {*/
-  /*border: solid black;*/
-/*}*/

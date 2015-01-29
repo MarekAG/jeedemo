@@ -17,6 +17,7 @@ public class Client {
     private String lastName = "";
     private String pesel = "";
 
+    private User user = new User();
     private List<House> houses = new ArrayList<House>();
 
     @Id
@@ -64,5 +65,14 @@ public class Client {
 
     public void setPesel(String pesel) {
         this.pesel = pesel;
+    }
+
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

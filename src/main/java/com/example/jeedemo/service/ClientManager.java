@@ -3,6 +3,7 @@ package com.example.jeedemo.service;
 import com.example.jeedemo.domain.Client;
 import com.example.jeedemo.domain.House;
 
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

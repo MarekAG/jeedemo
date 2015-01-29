@@ -7,6 +7,7 @@ import com.example.jeedemo.service.DeveloperManager;
 import com.example.jeedemo.service.HouseManager;
 
 import javax.ejb.Stateless;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
@@ -14,11 +15,12 @@ import javax.faces.model.ListDataModel;
 import javax.faces.validator.ValidatorException;
 import javax.inject.Inject;
 import javax.inject.Named;
+import java.io.Serializable;
 import java.util.List;
 
-@Stateless
+@SessionScoped
 @Named(value = "houseBean")
-public class HouseFormBean {
+public class HouseFormBean implements Serializable{
 
 
     private House house = new House();

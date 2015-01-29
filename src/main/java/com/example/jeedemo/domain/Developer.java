@@ -13,10 +13,11 @@ import java.util.List;
 public class Developer {
 
     private Long id;
-    private String name = "";
+    private String companyName = "";
     private String nip = "";
 
     private List<House> houses = new ArrayList<House>();
+    private User user = new User();
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,12 +30,12 @@ public class Developer {
     }
 
     @Size(min = 2, max = 30)
-    public String getName() {
-        return name;
+    public String getCompanyName() {
+        return companyName;
     }
 
-    public void setName(String firstName) {
-        this.name = firstName;
+    public void setCompanyName(String firstName) {
+        this.companyName = firstName;
     }
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
@@ -53,5 +54,14 @@ public class Developer {
 
     public void setNip(String pesel) {
         this.nip = pesel;
+    }
+
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

@@ -12,7 +12,7 @@
     <ui:define name="content">
         <jc:if test="#{developerBean.allDevelopers.rowCount != 0}" >
 
-        <h:form id="houseForm">
+        <h:form styleClass="form-group" id="houseForm">
             <h:panelGrid columns="2">
 
                 <h:outputText value="#{msg.color}" />
@@ -44,7 +44,7 @@
                 <h:outputText value="#{msg.developer}" />
                 <h:selectOneMenu id="developer" value="#{houseBean.developerId}" required="true">
                     <f:selectItems value="#{houseSellBean.allDevelopers}" var="developer"
-                                   itemValue="#{developer.id}" itemLabel="#{developer.name} (#{developer.nip})" />
+                                   itemValue="#{developer.id}" itemLabel="#{developer.companyName} (#{developer.nip})" />
                 </h:selectOneMenu>
             </h:panelGrid>
 

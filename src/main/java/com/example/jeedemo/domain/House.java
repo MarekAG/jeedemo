@@ -4,13 +4,15 @@ import javax.persistence.*;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
+import java.time.Instant;
 import java.util.Date;
 
 @Entity
 @NamedQueries({
         @NamedQuery(name = "house.all", query = "select h from House h"),
         @NamedQuery(name = "house.unsold", query = "Select h from House h where h.sold = false"),
-        @NamedQuery(name = "house.when", query = "Select h from House h where h.dateOfConstruction > :date"),
+        @NamedQuery(name = "house.buildDate", query = "Select h from House h where h.dateOfConstruction > :date"),
+        @NamedQuery(name = "house.newest", query = "Select h from House h order by h.dateOfAdding desc")
 })
 public class House {
     private Long id;
@@ -19,10 +21,9 @@ public class House {
     private int nrOfFloors;
     private String address ="";
     private Date dateOfConstruction = new Date();
+    private Date dateOfAdding = Date.from(Instant.now());
     private String imageUrl = "";
     private Boolean sold = false;
-//    private Developer developer = new Developer();
-
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -85,12 +86,13 @@ public class House {
         this.sold = sold;
     }
 
-//    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-//    public Developer getDeveloper() {
-//        return developer;
-//    }
-//
-//    public void setDeveloper(Developer developer) {
-//        this.developer = developer;
-//    }
+    @Temporal(TemporalType.DATE)
+    @Column(nullable = true)
+    public Date getDateOfAdding() {
+        return dateOfAdding;
+    }
+
+    public void setDateOfAdding(Date dateOfAdding) {
+        this.dateOfAdding = dateOfAdding;
+    }
 }

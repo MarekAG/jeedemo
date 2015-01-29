@@ -8,6 +8,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -17,14 +18,28 @@ public class HouseManager implements Serializable {
     @PersistenceContext
     EntityManager em;
 
+    private List<House> houses = new ArrayList<House>();
+
+
     public void addHouse(House house) {
         house.setId(null);
+        house.setDateOfAdding(new Date());
         em.persist(house);
     }
 
     public void deleteHouse(House house) {
         house = em.find(House.class, house.getId());
         em.remove(house);
+    }
+
+    public House getById(Long id) {
+        for (House house  : houses) {
+            if (house.getId().equals(id)) {
+                return house;
+            }
+        }
+
+        return null;
     }
 
     public List<House> getAllHouses() {
@@ -36,7 +51,11 @@ public class HouseManager implements Serializable {
     }
 
     public List<House> searchHousesByDate(Date date) {
-        return em.createNamedQuery("house.when").setParameter("date", date).getResultList();
+        return em.createNamedQuery("house.buildDate").setParameter("date", date).getResultList();
+    }
+
+    public List<House> getLastAddedHouses(Integer quantity) {
+        return em.createNamedQuery("house.newest").setMaxResults(quantity).getResultList();
     }
 
     public void sellHouse(Long clientId, Long houseId) {

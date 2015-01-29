@@ -7,7 +7,7 @@
 
     <ui:define name="content">
         <h:form>
-            <h:dataTable value="#{developerBean.allDevelopers}" var="item">
+            <h:dataTable styleClass="table" value="#{developerBean.allDevelopers}" var="item">
                 <f:facet name="header">#{msg.housesAllLabel}</f:facet>
                 <h:column>
                     <f:facet name="header">#{msg.name}</f:facet>

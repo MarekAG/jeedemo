@@ -49,19 +49,10 @@ public class DeveloperManager implements Serializable {
         return em.createNamedQuery("developer.all").getResultList();
     }
 
-//    public List<Developer> searchDevelopersByLastName(String lastName) {
-//        return em.createNamedQuery("developer.like").setParameter("lastName", lastName).getResultList();
-//    }
-
     public List<House> getDeveloperHouses(Developer developer) {
         developer = em.find(Developer.class, developer.getId());
         List<House> houses = new ArrayList<House>(developer.getHouses());
         return houses;
     }
 
-//    public List<House> getDeveloperHouses(Long id) {
-//        Developer developer = em.find(Developer.class, id);
-//        List<House> houses = new ArrayList<House>(developer.getHouses());
-//        return houses;
-//    }
 }

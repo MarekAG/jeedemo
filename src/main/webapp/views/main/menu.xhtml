@@ -7,54 +7,54 @@
 	<h:form>
 		<h:panelGrid columns="2">
 
-			<h:outputText value="#{msg.lang}: " />
+			<h:outputText styleClass="text text-info" value="#{msg.lang}: " />
 			<h:selectOneMenu value="#{language.localeCode}" onchange="submit()"
 							 valueChangeListener="#{language.countryLocaleCodeChanged}">
 				<f:selectItems value="#{language.countriesInMap}" />
 			</h:selectOneMenu>
 		</h:panelGrid>
-	  <ul>
-		<li>
-		  <h:commandLink action="home?faces-redirect=true">
+
+		<br/>
+		  <h:commandLink styleClass="btn btn-default btn-block" action="home?faces-redirect=true">
 			<h:outputText value="#{msg.linkHome}" />
 		  </h:commandLink>
-		</li>
-		  <li>
-			  <h:commandLink action="addDeveloper?faces-redirect=true">
+		
+		  <br/>
+			  <h:commandLink styleClass="btn btn-default btn-block" action="addDeveloper?faces-redirect=true">
 				  <h:outputText value="#{msg.addDeveloper}" />
 			  </h:commandLink>
-		  </li>
-		  <li>
-			  <h:commandLink action="addHouse?faces-redirect=true">
+		  
+		  <br/>
+			  <h:commandLink styleClass="btn btn-default btn-block" action="addHouse?faces-redirect=true">
 				  <h:outputText value="#{msg.addHouse}" />
 			  </h:commandLink>
-		  </li>
-		  <li>
-			  <h:commandLink action="addClient?faces-redirect=true">
+		  
+		  <br/>
+			  <h:commandLink styleClass="btn btn-default btn-block" action="addClient?faces-redirect=true">
 				  <h:outputText value="#{msg.addClient}" />
 			  </h:commandLink>
-		  </li>
-		  <li>
-			  <h:commandLink action="showDevelopers?faces-redirect=true">
+		  
+		  <br/>
+			  <h:commandLink styleClass="btn btn-default btn-block" action="showDevelopers?faces-redirect=true">
 				  <h:outputText value="#{msg.showDevelopers}" />
 			  </h:commandLink>
-		  </li>
-		  <li>
-			  <h:commandLink action="showHouses?faces-redirect=true">
+		  
+		  <br/>
+			  <h:commandLink styleClass="btn btn-default btn-block" action="showHouses?faces-redirect=true">
 				  <h:outputText value="#{msg.showHouses}" />
 			  </h:commandLink>
-		  </li>
-		  <li>
-			  <h:commandLink action="showClients?faces-redirect=true">
+		  
+		  <br/>
+			  <h:commandLink styleClass="btn btn-default btn-block"  action="showClients?faces-redirect=true">
 				  <h:outputText value="#{msg.showClients}" />
 			  </h:commandLink>
-		  </li>
-		  <li>
-			  <h:commandLink action="sellHouse?faces-redirect=true">
+		  
+		  <br/>
+			  <h:commandLink styleClass="btn btn-default btn-block" action="sellHouse?faces-redirect=true">
 				  <h:outputText value="#{msg.sellHouse}" />
 			  </h:commandLink>
-		  </li>
-	</ul>
-   </h:form>
+		  
+		<h:commandButton rendered="#{userLogin.loggedIn}" value="logout" action="#{userLogin.logout}"/> <br/>
+	</h:form>
   </div>
 </ui:composition>

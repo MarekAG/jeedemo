@@ -2,8 +2,11 @@ package com.example.jeedemo.web;
 
 import com.example.jeedemo.domain.Client;
 import com.example.jeedemo.domain.House;
+import com.example.jeedemo.domain.User;
 import com.example.jeedemo.service.ClientManager;
 import com.example.jeedemo.service.HouseManager;
+import com.example.jeedemo.service.UserManager;
+import com.example.jeedemo.service.UserRegisterManager;
 
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
@@ -31,6 +34,12 @@ public class ClientFormBean implements Serializable {
     @Inject
     HouseManager hm;
 
+    @Inject
+    UserRegisterManager urm;
+
+    @Inject
+    UserManager um;
+
     public Client getClient() {
         return client;
     }
@@ -50,6 +59,14 @@ public class ClientFormBean implements Serializable {
     }
 
     public String addClient() {
+        User newUser = new User();
+        if(urm.getUsername().length() < 1)
+            return "showDevelopers";
+        newUser.setName(urm.getUsername());
+        newUser.setPass(urm.getPassword());
+        um.addUser(newUser);
+        User fromDb = um.getByNameAndPass(newUser.getName(), newUser.getPass());
+        client.setUser(fromDb);
         cm.addClient(client);
         return "showClients";
     }

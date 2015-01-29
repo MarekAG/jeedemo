@@ -6,5 +6,20 @@
 	template="/templates/default.xhtml">
 	<ui:define name="content">
 		<p>#{msg.applicationInfo}</p>
+		<h:form rendered="#{!userLogin.loggedIn}">
+			<h:inputText value="#{userLogin.username}" /> <br/>
+			<h:inputSecret value="#{userLogin.password}" /> <br/>
+			<h:commandButton value="login" action="#{userLogin.login}" /> <br/>
+		</h:form>
+
+		<h:form rendered="#{!userLogin.loggedIn}">
+			<h:inputText value="#{userRegister.username}" /> <br/>
+			<h:inputSecret value="#{userRegister.password}" /> <br/>
+			<h:selectOneMenu required="true" value="#{userRegister.type}">
+				<f:selectItem itemValue="client" itemLabel="Client"/>
+				<f:selectItem itemValue="developer" itemLabel="Developer"/>
+			</h:selectOneMenu> <br/>
+			<h:commandButton value="register" action="#{userRegister.register}" /> <br/>
+		</h:form>
 	</ui:define>
 </ui:composition>
